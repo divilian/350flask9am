@@ -14,7 +14,8 @@ def functionname():
         cur.execute("select distinct flavorName from recipe order by flavorName")
         parker = cur.fetchall()
         conn.close()
-        return render_template("chooseflavor.html", flavors=parker)
+        msg = request.args['msg'] if "msg" in request.args else ""
+        return render_template("chooseflavor.html", flavors=parker, msg=msg)
 
 
 @uh.route("/browserecipes")
@@ -26,7 +27,7 @@ def browserecipes():
     recipes = cur.fetchall()
     conn.close()
     if len(recipes) == 0:
-       return f"<HTML><BODY><H1>GROSS!! We hate {request.args['flavor']} here at B and J's</H1></BODY></HTML>"
+       return redirect(url_for("functionname", msg=f"Please choose a valid flavor, not {request.args['flavor']}"))
     return render_template("browserecipes.html", flavor=request.args['flavor'],
         recipes=recipes)
 

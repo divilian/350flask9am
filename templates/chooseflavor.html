@@ -3,6 +3,11 @@
     <title></title>
 </head>
 <body>
+
+{% if msg is defined %}
+<p style="font-size:x-large;color:red;">{{msg}}</p>
+{% endif %}
+
 <p>What's your favorite flavor?</p>
 
 <form method="get">
