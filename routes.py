@@ -31,6 +31,9 @@ def browserecipes():
     return render_template("browserecipes.html", flavor=request.args['flavor'],
         recipes=recipes)
 
+@uh.route("/recipedetails")
+def recipedetails():
+    return f"Yay these are the details for {request.args['name']}!"
 
 
 
