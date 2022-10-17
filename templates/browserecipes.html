@@ -10,9 +10,6 @@
 <table>
 <tr><th>Recipe</th><th>Cartons ordered</th></tr>
 {% for recipe in recipes %}
-<!--
-<tr><td><a href="http://stephendavies.org/recipedetails?name=Phish+Food">Phish Food</a></td><td>58</td></tr>
--->
 <tr><td><a href="{{url_for('recipedetails',name=recipe[0])}}">{{recipe[0]}}</a></td><td>{{recipe[1]}}</td></tr>
 {% endfor %}
 
