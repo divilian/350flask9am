@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>{{flavor}}-based recipes!</title>
+    <style type="text/css">
+        td, th { border:1px solid black; padding:10px;}
+    </style>
+</head>
+<body>
+<h1>{{flavor}}-based recipes!</h1>
+<table>
+<tr><th>Recipe</th><th>Cartons ordered</th></tr>
+{% for recipe in recipes %}
+<tr><td>{{recipe[0]}}</td><td>{{recipe[1]}}</td></tr>
+{% endfor %}
+</table>
+</body>
+</html>
