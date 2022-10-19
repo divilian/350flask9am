@@ -5,5 +5,12 @@
 <body>
 <h1>Check out our {{recipename}} recipe!</h1>
 <p>It starts out with luscious, velvety <b>{{flavor}}</b> ice cream, and adds these mixins:</p>
+
+<ul>
+{% for mixin in mixins %}
+    <li>{{mixin[0]}}</li>
+{% endfor %}
+</ul>
+
 </body>
 </html>

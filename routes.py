@@ -38,9 +38,12 @@ def recipedetails():
     cur = conn.cursor()
     cur.execute("select flavorName from recipe where name=?", (recipename,))
     flavor = cur.fetchone()[0]
+    cur.execute("select mixin_name from ingredients where recipe_name=?",
+        (recipename,))
+    mixins = cur.fetchall()
     conn.close()
     return render_template("recipedetails.html", recipename=recipename,
-        flavor=flavor)
+        flavor=flavor, mixins=mixins)
 
 
 
