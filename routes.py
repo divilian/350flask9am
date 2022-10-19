@@ -33,7 +33,14 @@ def browserecipes():
 
 @uh.route("/recipedetails")
 def recipedetails():
-    return f"Yay these are the details for {request.args['name']}!"
+    recipename= request.args['name']
+    conn = sqlite3.connect("bj.sqlite")
+    cur = conn.cursor()
+    cur.execute("select flavorName from recipe where name=?", (recipename,))
+    flavor = cur.fetchone()[0]
+    conn.close()
+    return render_template("recipedetails.html", recipename=recipename,
+        flavor=flavor)
 
 
 
