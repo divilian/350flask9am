@@ -62,6 +62,18 @@ def handleorder():
         msg=f"There are now {totalOrdered} cartons ordered of {recipename}!"))
 
 
+@uh.route("/recipemaker", methods=['GET','POST'])
+def recipemaker():
+    if "name" in request.form:
+        return f"we'll get right on that new {request.form['name']} recipe!"
+    else:
+        conn = sqlite3.connect("bj.sqlite")
+        cur = conn.cursor()
+        cur.execute("select distinct flavorName from recipe")
+        flavors = cur.fetchall()
+        cur.execute("select distinct mixin_name from ingredients")
+        mixins = cur.fetchall()
+        return render_template("recipemaker.html", flavors=flavors, mixins=mixins)
 
 
 
