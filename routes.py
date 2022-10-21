@@ -47,7 +47,20 @@ def recipedetails():
 
 @uh.route("/handleorder")
 def handleorder():
-    return "Whoopie! Ice cream!"
+    # Handle non-integer input.   -- Matt
+    quantity = int(request.args['quantity'])
+    recipename = request.args['recipename']
+    conn = sqlite3.connect("bj.sqlite")
+    cur = conn.cursor()
+    cur.execute("update recipe set cartonsOrdered = cartonsOrdered + ? " +
+        "where name=?", (quantity, recipename))
+    conn.commit()
+    cur.execute("select cartonsOrdered from recipe where name=?",
+        (recipename,))
+    totalOrdered = cur.fetchone()[0]
+    return redirect(url_for("functionname",
+        msg=f"There are now {totalOrdered} cartons ordered of {recipename}!"))
+
 
 
 

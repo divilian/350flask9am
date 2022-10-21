@@ -14,8 +14,9 @@
 
 <form action={{url_for('handleorder')}} method="get">
     How many cartons of {{recipename}} do you want, bro?
-    <input type=text name=quantity />
-    <input type=submit value="Yumm!" />
+    <input type="text" name="quantity" />
+    <input type="hidden" name="recipename" value="{{recipename}}" />
+    <input type="submit" value="Yumm!" />
 </form>
 </body>
 </html>
