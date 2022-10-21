@@ -45,6 +45,9 @@ def recipedetails():
     return render_template("recipedetails.html", recipename=recipename,
         flavor=flavor, mixins=mixins)
 
+@uh.route("/handleorder")
+def handleorder():
+    return "Whoopie! Ice cream!"
 
 
 
