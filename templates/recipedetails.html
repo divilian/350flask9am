@@ -1,8 +1,6 @@
-<html>
-<head>
-    <title>Check out our {{recipename}} recipe!</title>
-</head>
-<body>
+{% extends "base.html" %}
+    {% block title %} Here are the details for {{flavor}} {% endblock %}
+{% block content %}
 <h1>Check out our {{recipename}} recipe!</h1>
 <p>It starts out with luscious, velvety <b>{{flavor}}</b> ice cream, and adds these mixins:</p>
 
@@ -18,5 +16,4 @@
     <input type="hidden" name="recipename" value="{{recipename}}" />
     <input type="submit" value="Yumm!" />
 </form>
-</body>
-</html>
+{% endblock %}

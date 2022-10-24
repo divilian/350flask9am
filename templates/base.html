@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>{% block title %} Ben and Jerry's! {% endblock %}</title>
+</head>
+<body>
+
+{% if msg is defined %}
+<p style="font-size:x-large;color:red;">{{msg}}</p>
+{% endif %}
+
+<center>
+<span style="font-size:x-large;">Welcome to <span style="color:red;">Ben</span> <span
+style="color:green;">and</span> <span style="color:blue;">Jerry's!</span></span>
+</center>
+
+<hr/>
+
+{% block content %} Yo! {% endblock %}
+
+<hr/>
+<center>
+&copy; 2022 Stephen Davies enterprises &mdash;
+<img width=50 src="{{url_for('static', filename='americonedream.png')}}" />
+</center>
+</html>

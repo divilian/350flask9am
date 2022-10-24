@@ -1,11 +1,6 @@
-<html>
-<head>
-    <title>{{flavor}}-based recipes!</title>
-    <style type="text/css">
-        td, th { border:1px solid black; padding:10px;}
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
+    {% block title %} {{flavor}}-based recipes! {% endblock %}
+{% block content %}
 <h1>{{flavor}}-based recipes!</h1>
 <table>
 <tr><th>Recipe</th><th>Cartons ordered</th></tr>
@@ -14,5 +9,5 @@
 {% endfor %}
 
 </table>
-</body>
-</html>
+
+{% endblock %}

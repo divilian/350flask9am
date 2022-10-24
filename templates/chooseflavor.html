@@ -1,13 +1,6 @@
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
 
-{% if msg is defined %}
-<p style="font-size:x-large;color:red;">{{msg}}</p>
-{% endif %}
-
+{% block content %}
 <p>What's your favorite flavor?</p>
 
 <form method="get">
@@ -23,4 +16,5 @@
 </body>
 <hr/>
 OR....<a href="{{url_for('recipemaker')}}">make your own flavor</a>!
-</html>
+
+{% endblock %}
