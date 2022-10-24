@@ -65,7 +65,18 @@ def handleorder():
 @uh.route("/recipemaker", methods=['GET','POST'])
 def recipemaker():
     if "name" in request.form:
-        return f"we'll get right on that new {request.form['name']} recipe!"
+        conn = sqlite3.connect("bj.sqlite")
+        cur = conn.cursor()
+        cur.execute("insert into recipe (name, cartonsOrdered, flavorName) " +
+            "values (?, 0, ?)", (request.form['name'],
+            request.form['baseFlave']))
+        for key,value in request.form.items():
+            if key == value:
+                cur.execute("insert into ingredients (recipe_name, " +
+                    "mixin_name) values (?, ?)", (request.form['name'], key))
+        conn.commit()
+        return "Thanks!"
+        #return redirect(url_for("recipedetails", name=request.form['name']))
     else:
         conn = sqlite3.connect("bj.sqlite")
         cur = conn.cursor()

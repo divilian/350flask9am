@@ -4,16 +4,19 @@
 </head>
 <body>
 <form method="post">
-    What is the name your new recipe?
+    What is the name of your new recipe?
     <input type=text name=name />
     <br/>
     What flavor would you like it to be based on?
+    <br/>
+
     {% for flavor in flavors %}
     <input type=radio name=baseFlave value="{{flavor[0]}}" /> {{flavor[0]}} <br/>
     {% endfor %}
 
     <p/>
     What mixin(s) would you like it to have?
+    <br/>
     {% for mixin in mixins %}
     <input type=checkbox  name="{{mixin[0]}}" value="{{mixin[0]}}" /> {{mixin[0]}} <br/>
     {% endfor %}
